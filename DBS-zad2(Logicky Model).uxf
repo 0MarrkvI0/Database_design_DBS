@@ -1,0 +1,152 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>369</x><y>702</y><w>189</w><h>216</h></coordinates><panel_attributes>Character
+--
+ID (PK)
+CLASS_ID (FK)
+
+MaxHealth (int)
+MaxAP (int)
+Armor (int)
+MaxInventoryWeight (int)
+
+CurrnetWeight (float)
+CurrentHealth (int)
+CurrentAP (int)
+Status (ENUM)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>1044</y><w>189</w><h>108</h></coordinates><panel_attributes>Class
+--
+ID (PK)
+Name (string)
+ClassModifier (float)
+ClassArmorMofifier (float)
+ClassInventoryModifier(float)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>909</y><w>81</w><h>153</h></coordinates><panel_attributes>chooses v
+m1=1
+m2=0...*
+</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>99</x><y>1161</y><w>108</w><h>36</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1017</x><y>855</y><w>189</w><h>81</h></coordinates><panel_attributes>InventoryItem
+--
+ID (PK)
+CHARACTER_ID (FK)
+ITEM_ID (FK)
+IsEquiped (bool)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1647</x><y>855</y><w>198</w><h>108</h></coordinates><panel_attributes>Item
+--
+ID (PK)
+STATE (ENUM)
+//INVENTORYITEM_ID (FK)
+ItemModifier (float)
+Name (String)
+Weight (float)
+Type (ENUM)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>549</x><y>873</y><w>486</w><h>45</h></coordinates><panel_attributes>owns &gt;
+m1=0...*
+m2=1</panel_attributes><additional_attributes>520;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1197</x><y>882</y><w>468</w><h>45</h></coordinates><panel_attributes>&lt; becomes
+m1=0...1
+m2=1</panel_attributes><additional_attributes>10;20;500;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1017</x><y>495</y><w>189</w><h>63</h></coordinates><panel_attributes>Combat
+--
+ID (PK)
+ROUND_ID (FK)
+//BattlegroundItems (FK)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1017</x><y>639</y><w>189</w><h>81</h></coordinates><panel_attributes>Round
+--
+ID (PK)
+Number (int)
+StartTime (TIME)
+EndTime (TIME)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1305</x><y>477</y><w>207</w><h>252</h></coordinates><panel_attributes>CombatLog
+--
+ID (PK)
+ROUND_ID (FK)
+COMBAT_ID (FK)
+TIME (TIMESTAMP)
+DiceThrow(int)
+
+COMBATPARTICIPANT_ID (attacker)(FK)
+COMBATPARTICIPANT_ID(target)(FK)
+Event_msg_type (ENUM)
+
+Spell_ID (FK)
+APCost (int)
+Damage (int)
+
+MoveSucceeded (bool)
+BATTLEGROUNDITEM_ID (FK)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>981</x><y>135</y><w>189</w><h>117</h></coordinates><panel_attributes>Spell
+--
+ID (PK)
+CATEGORY_ID (FK)
+Name (String)
+BaseCost (int)
+BaseDamage (int)
+Accuracy (int)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>981</x><y>333</y><w>189</w><h>72</h></coordinates><panel_attributes>Category
+--
+ID (PK)
+Name (String)
+CategoryBaseCostModifier (float)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>153</y><w>189</w><h>99</h></coordinates><panel_attributes>SpellAttributeEffect
+--
+ID (PK)
+ATTRIBUTE_ID (FK)
+SPELL_ID (FK)
+Action (ENUM)
+ModifierType (char)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>180</y><w>189</w><h>63</h></coordinates><panel_attributes>Attribute
+--
+ID (PK)
+Name (String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>495</y><w>189</w><h>99</h></coordinates><panel_attributes>CombatParticipant
+--
+ID (PK)
+CHARACTER_ID (FK)
+COMBAT_ID (FK)
+//CurrentHealth (int)
+//CurrentAP (int)
+IsAlive (bool)
+JoinTime (TIMESTAMP)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>837</x><y>1026</y><w>63</w><h>36</h></coordinates><panel_attributes></panel_attributes><additional_attributes>50;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>369</x><y>369</y><w>189</w><h>81</h></coordinates><panel_attributes>Character'sAtribute
+--
+ATTRIBUTE_ID (FK)
+CHARACTER_ID (FK)
+Value (int)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>441</x><y>234</y><w>81</w><h>153</h></coordinates><panel_attributes>m1=1
+m2=1...*
+matches ^</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>441</y><w>54</w><h>279</h></coordinates><panel_attributes>m1=5..*
+m2=1
+has ^</panel_attributes><additional_attributes>10;10;10;290</additional_attributes></element><element><id>Relation</id><coordinates><x>1053</x><y>243</y><w>90</w><h>108</h></coordinates><panel_attributes>belongs in v
+m1=0...*
+m2=1</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>189</y><w>117</w><h>45</h></coordinates><panel_attributes>&lt; demands 
+m1=0...*
+m2= 1</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>657</x><y>0</y><w>567</w><h>432</h></coordinates><panel_attributes>Spell
+--
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>549</x><y>198</y><w>171</w><h>45</h></coordinates><panel_attributes>affects &gt;
+m1=0...*
+m2=1</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>702</x><y>306</y><w>171</w><h>63</h></coordinates><panel_attributes>
+bg=blue
+Action = Damge, CostAP, Heal
+ModifierType = +,-,*,/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>774</x><y>243</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1665</x><y>639</y><w>180</w><h>81</h></coordinates><panel_attributes>BattlegroundItem
+--
+ID (PK)
+ITEM_ID (FK)
+COMBAT_ID (FK)
+isTaken (bool)
+//COMBATPATRICIPANT_ID (dropped)(FK)
+//COMBATPATRICIPANT_ID (taken)(FK)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>531</y><w>234</w><h>189</h></coordinates><panel_attributes>becomes &gt;
+m1=1
+m2=0...*</panel_attributes><additional_attributes>10;190;10;20;240;20</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>513</y><w>153</w><h>45</h></coordinates><panel_attributes>&lt; includes 
+m1=2...*
+m2=1</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1098</x><y>549</y><w>54</w><h>108</h></coordinates><panel_attributes>has v
+m1=1...*
+m2=1</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1602</x><y>558</y><w>27</w><h>27</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1746</x><y>711</y><w>81</w><h>162</h></coordinates><panel_attributes>becomes ^
+m1=0...1
+m2=1</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>657</x><y>432</y><w>1242</w><h>396</h></coordinates><panel_attributes>Combat
+--
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1197</x><y>666</y><w>126</w><h>45</h></coordinates><panel_attributes>creates &gt;
+m1=1
+m2=1...*</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1503</x><y>666</y><w>180</w><h>45</h></coordinates><panel_attributes>records usage of &gt;
+m1=1
+m2= 0...1</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>657</x><y>828</y><w>666</w><h>216</h></coordinates><panel_attributes>Inventory
+--
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>117</y><w>657</w><h>1062</h></coordinates><panel_attributes>Character
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>126</x><y>864</y><w>189</w><h>54</h></coordinates><panel_attributes>
+bg=blue
+Status = Resting, In Combat, Idle</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>306</x><y>882</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1305</x><y>756</y><w>234</w><h>63</h></coordinates><panel_attributes>
+bg=blue
+Event_msg_time = Cast Spell, Pick Item, Died</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1161</x><y>198</y><w>360</w><h>297</h></coordinates><panel_attributes>records usage of ^
+m1=0..1
+m2= 0...*</panel_attributes><additional_attributes>10;10;270;10;270;310</additional_attributes></element><element><id>Relation</id><coordinates><x>1395</x><y>720</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1647</x><y>1008</y><w>288</w><h>54</h></coordinates><panel_attributes>
+bg=blue
+Type = Potion, Bow, Sword, Gold
+STATE = BATTLEGROUNDITEM | INVENTORYITEM</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1746</x><y>954</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element></diagram>
